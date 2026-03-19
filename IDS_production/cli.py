@@ -95,6 +95,10 @@ def main():
     monitor = MultiLogMonitor(dashboard.config, dashboard.on_event)
     monitor.start()
 
+    # Ensure Simulation is running
+    import subprocess
+    subprocess.Popen(["python3", "simulate_logs.py"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
     with Live(dashboard.generate_layout(), refresh_per_second=2) as live:
         try:
             while True:
