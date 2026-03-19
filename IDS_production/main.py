@@ -7,7 +7,7 @@ from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout,
 from PySide6.QtCore import Qt, QTimer, Signal, Slot, QObject
 from PySide6.QtGui import QColor, QFont
 from ui_glass import GLASSS_STYLE
-from monitor import LogMonitorThread
+from monitor import MultiLogMonitor as LogMonitorThread
 
 class IDS_App(QMainWindow):
     # Signals for thread-safe UI updates
@@ -88,7 +88,16 @@ class IDS_App(QMainWindow):
         if not os.path.exists(log_to_watch):
              open(log_to_watch, "w").close()
 
-        self.monitor_thread = LogMonitorThread(log_to_watch, self.on_log_received)
+        # Ensure simulation is running
+        import subprocess
+        subprocess.Popen(["python3", "simulate_logs.py"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        
+        # Load Config
+        import json
+        with open("config.json", "r") as f:
+            cfg = json.load(f)
+
+        self.monitor_thread = LogMonitorThread(cfg, self.on_log_received)
         self.update_log_signal.connect(self.process_new_event)
         self.monitor_thread.start()
 
