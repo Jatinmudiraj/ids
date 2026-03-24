@@ -1,4 +1,4 @@
-# ANTIGRAVITY IDS — Advanced Security Suite
+# ADVANCED IDS — Advanced Security Suite
 
 Professional Intrusion Detection System for autonomous threat monitoring.
 
@@ -35,4 +35,4 @@ To test the detection engine with simulated attacks:
 - `model/`: Production model snapshots.
 
 ---
-*Created by Antigravity AI*
+*Created by Advanced AI*

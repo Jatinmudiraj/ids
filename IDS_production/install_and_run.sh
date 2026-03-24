@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "==========================================================="
-echo "        ANTIGRAVITY IDS - INITIALIZATION SCRIPT            "
+echo "        ADVANCED IDS - INITIALIZATION SCRIPT            "
 echo "==========================================================="
 
 # Detect if we have python3
