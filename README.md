@@ -1,1 +1,1 @@
-# ADVANCED IDS — Advanced Security Suite
+# IDS — Advanced Security Suite Trained on the Generated Logs
